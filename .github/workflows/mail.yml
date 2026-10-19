@@ -25,4 +25,4 @@ jobs:
           CITY_NAME: ${{ vars.CITY_NAME }}
           CITY_LAT:  ${{ vars.CITY_LAT }}
           CITY_LON:  ${{ vars.CITY_LON }}
-        run: python main.py
+        run: python bot.py
