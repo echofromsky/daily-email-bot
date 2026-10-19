@@ -1,0 +1,28 @@
+name: 每日邮件机器人
+
+on:
+  schedule:
+    - cron: '0 23 * * *'      # UTC 23:00 = 北京时间 次日 07:00
+  workflow_dispatch:          # 允许手动点击运行
+
+jobs:
+  send-mail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 发送每日邮件
+        env:
+          MAIL_USER: ${{ secrets.MAIL_USER }}
+          MAIL_PASS: ${{ secrets.MAIL_PASS }}
+          MAIL_TO:   ${{ secrets.MAIL_TO }}
+          CITY_NAME: ${{ vars.CITY_NAME }}
+          CITY_LAT:  ${{ vars.CITY_LAT }}
+          CITY_LON:  ${{ vars.CITY_LON }}
+        run: python main.py
