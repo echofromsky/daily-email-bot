@@ -11,9 +11,9 @@ MAIL_PASS = os.environ.get("MAIL_PASS", "")
 MAIL_TO = os.environ.get("MAIL_TO", "") or MAIL_USER
 SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.qq.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "465"))
-CITY = os.environ.get("CITY_NAME", "上海")
-LAT = float(os.environ.get("CITY_LAT", "31.23"))
-LON = float(os.environ.get("CITY_LON", "121.47"))
+CITY = os.environ.get("CITY_NAME") or "上海"
+LAT = float(os.environ.get("CITY_LAT") or "31.23")
+LON = float(os.environ.get("CITY_LON") or "121.47")
 
 COORD = {"北京": (39.9, 116.4), "上海": (31.23, 121.47), "广州": (23.13, 113.26),
          "深圳": (22.54, 114.06), "杭州": (30.27, 120.15), "南京": (32.06, 118.8),
